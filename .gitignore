@@ -5,6 +5,7 @@
 !*.gitignore
 !*.gd
 !*.md
+!LICENSE*
 
 # ...even if they are in subdirectories
 !*/
