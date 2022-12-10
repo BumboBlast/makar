@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GUI/CodeEditor.gd" type="Script" id=1]
 [ext_resource path="res://GUI/DisplayPort.gd" type="Script" id=2]
 [ext_resource path="res://MarginContainer.gd" type="Script" id=3]
+[ext_resource path="res://GUI.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://GUI/fonts/Ubuntu_Mono/UbuntuMono-Bold.ttf"
@@ -11,6 +12,7 @@ font_path = "res://GUI/fonts/Ubuntu_Mono/UbuntuMono-Bold.ttf"
 font_data = SubResource( 1 )
 
 [node name="GUI" type="Control"]
+script = ExtResource( 4 )
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 margin_right = 1029.0
