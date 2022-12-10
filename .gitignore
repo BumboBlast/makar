@@ -4,6 +4,7 @@
 # But not these files...
 !.gitignore
 !.gd
+!.md
 
 # ...even if they are in subdirectories
 !*/
