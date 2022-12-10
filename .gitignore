@@ -1,1 +1,9 @@
-*.tcsn
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!.gd
+
+# ...even if they are in subdirectories
+!*/
