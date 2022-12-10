@@ -11,12 +11,6 @@ var editor_code: String
 func set_editor_code(content: String):
 	editor_code = content
 
-# return a token array for each line 
-func get_lines():
-	pass
-
-
-
 
 
 
@@ -26,8 +20,15 @@ func get_lines():
 func _on_GUI_try_execute():
 	try_execute()
 func try_execute():
-	print( "trying to run the code")
+	print( " trying to run the cod e ")
 	if (running_mutex_lock):
 		pass
 	
+	pass
+
+
+
+
+# return a token array for each line 
+func get_lines():
 	pass
