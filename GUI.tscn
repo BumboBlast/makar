@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GUI/CodeEditor.gd" type="Script" id=1]
 [ext_resource path="res://GUI/DisplayPort.gd" type="Script" id=2]
+[ext_resource path="res://MarginContainer.gd" type="Script" id=3]
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://GUI/fonts/Ubuntu_Mono/UbuntuMono-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
 
 [node name="GUI" type="Control"]
 
@@ -19,11 +24,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 split_offset = 100
 
-[node name="CodeEditor" type="TextEdit" parent="HSplitContainer/VSplitContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/VSplitContainer"]
 margin_right = 843.0
 margin_bottom = 394.0
 size_flags_vertical = 3
-theme = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="CodeEditor" type="TextEdit" parent="HSplitContainer/VSplitContainer/MarginContainer"]
+margin_right = 843.0
+margin_bottom = 394.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
 highlight_current_line = true
 syntax_highlighting = true
 show_line_numbers = true
