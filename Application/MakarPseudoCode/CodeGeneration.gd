@@ -18,7 +18,6 @@ func generate_code():
 	var header = "extends \"res://Application/MakarPseudoCode/Executor.gd\"\n\n"
 	var start_function = "func start():\n\tprint(\"called generated code\")\n"
 	
+	
 	new_code += header
 	new_code += start_function
-	
-	

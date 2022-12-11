@@ -31,7 +31,7 @@ func try_execute():
 	for line in editor_code:
 		$LexicalAnalyzer.set_input_code(line)
 		var lexemes = $LexicalAnalyzer.make_lexems()
-		
+
 		$SyntacticAnalyzer.set_lexemes(lexemes)
 		var new_parse_tree = $SyntacticAnalyzer.make_parse_tree()
 	
