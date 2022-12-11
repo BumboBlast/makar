@@ -17,6 +17,5 @@ func _ready():
 
 
 func _on_GUI_try_execute():
-	print( "trying to run the code")
 	# pass the code to makar
 	pass # Replace with function body.

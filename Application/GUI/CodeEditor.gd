@@ -15,6 +15,9 @@ func _input(event):
 
 
 func push_code():
-	var editor_content: String = self.get_text();
+	var editor_content: Array
+	for line_number in range(0, get_line_count()):
+		editor_content.append(get_line(line_number))
+	
 	get_tree().get_root().get_node("Application/MakarPsuedoCode").set_editor_code(editor_content)
 	get_tree().get_root().get_node("Application/GUI").emit_signal("try_execute")

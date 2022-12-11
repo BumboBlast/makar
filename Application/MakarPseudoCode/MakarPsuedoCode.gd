@@ -3,15 +3,14 @@ extends Node
 
 # keep track of "if its trying to execute"
 var running_mutex_lock: bool = false
-var editor_code: String
+var editor_code: Array
+
 
 
 
 # pass the editor content to makar
-func set_editor_code(content: String):
+func set_editor_code(content: Array):
 	editor_code = content
-
-
 
 
 # attempt to resolve the syntax, and begin updating the display
@@ -20,15 +19,21 @@ func set_editor_code(content: String):
 func _on_GUI_try_execute():
 	try_execute()
 func try_execute():
-	print( " trying to run the cod e ")
+	
 	if (running_mutex_lock):
 		pass
 	
-	pass
-
-
-
-
-# return a token array for each line 
-func get_lines():
+	
+	for line in editor_code:
+		$LexicalAnalyzer.set_input_code(line)
+		var lexemes = $LexicalAnalyzer.make_lexems()
+		
+		$SyntacticAnalyzer.set_lexemes(lexemes)
+		var parse_tree = $SyntacticAnalyzer.make_parse_tree()
+	
+	# set content in executor first
+	$Executor.save_script()
+	$Executor.run_script()
+	#$Executor.empty_script()
+	
 	pass
