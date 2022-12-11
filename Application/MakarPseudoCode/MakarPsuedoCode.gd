@@ -20,20 +20,28 @@ func _on_GUI_try_execute():
 	try_execute()
 func try_execute():
 	
+	# part of optimize plan ):
 	if (running_mutex_lock):
 		pass
 	
+	# free all resources
+	
+	var big_parse_tree
 	
 	for line in editor_code:
 		$LexicalAnalyzer.set_input_code(line)
 		var lexemes = $LexicalAnalyzer.make_lexems()
 		
 		$SyntacticAnalyzer.set_lexemes(lexemes)
-		var parse_tree = $SyntacticAnalyzer.make_parse_tree()
+		var new_parse_tree = $SyntacticAnalyzer.make_parse_tree()
+	
+	# wtf is a parse tree and how to do turn it into code
+	$CodeGeneration.set_parse_tree(big_parse_tree)
+	$CodeGeneration.generate_code()
 	
 	# set content in executor first
+	$Executor.set_content($CodeGeneration.get_new_code())
 	$Executor.save_script()
-	$Executor.run_script()
-	#$Executor.empty_script()
 	
-	pass
+	$Executor.run_script()
+	$Executor.empty_script()

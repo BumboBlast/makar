@@ -1,6 +1,9 @@
 extends Node
 
-var content: String = "extends \"res://Application/MakarPseudoCode/Executor.gd\""
+var content: String = "extends \"res://Application/MakarPseudoCode/Executor.gd\"\n\n"
+
+func set_content(new_content: String):
+	content = new_content
 
 func save_script():
 	var generated_code = File.new()
@@ -12,14 +15,13 @@ func save_script():
 func run_script():
 	print("trying to run the script")
 	
-	content += "\nfunc foo():\n\tprint(\"called foo\")"
-	save_script()
+	var Generated_code = load("res://Application/MakarPseudoCode/GeneratedCode.gd")
+	var run = Generated_code.new()
 	
-	$GeneratedCode.foo()
-	
-	pass
+	# make sure this works or else itll crash
+	run.start()
 
 
 func empty_script():
-	content.empty()
+	content = ""
 	save_script()

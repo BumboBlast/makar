@@ -44,5 +44,8 @@ func syntax_correct():
 # convert lexeme-token pairs into a parse tree to be executed
 func make_parse_tree():
 	pair_lexeme_and_token()
+	
+	# wtf is a parse tree and how to do turn it into code
+	
 	if (!syntax_correct()):
 		print("Syntax incorrect")
