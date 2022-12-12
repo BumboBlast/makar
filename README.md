@@ -5,5 +5,4 @@ Makar is a minimal pseudo-code paired with a simple GUI in order to visualize da
 ## Example Syntax:
 
 #### Initialize an empty array
-make array my_cool_array
-
+><span style="color:blue">make array </span> primes
