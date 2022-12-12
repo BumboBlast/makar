@@ -6,6 +6,15 @@ var running_mutex_lock: bool = false
 var editor_code: Array
 
 
+class TreeNode:
+	var lexeme: String
+	var token: String
+
+
+class ParseTree:
+	var root: String
+	var node: Array
+
 
 
 # pass the editor content to makar
@@ -26,17 +35,18 @@ func try_execute():
 	
 	# free all resources
 	
-	var big_parse_tree
+	var parse_tree_set: Array
 	
 	for line in editor_code:
 		$LexicalAnalyzer.set_input_code(line)
 		var lexemes = $LexicalAnalyzer.make_lexems()
 
 		$SyntacticAnalyzer.set_lexemes(lexemes)
-		var new_parse_tree = $SyntacticAnalyzer.make_parse_tree()
+		var new_parse_tree: ParseTree = $SyntacticAnalyzer.make_parse_tree()
+		parse_tree_set.append(new_parse_tree)
 	
 	# wtf is a parse tree and how to do turn it into code
-	$CodeGeneration.set_parse_tree(big_parse_tree)
+	$CodeGeneration.set_parse_tree(parse_tree_set[0])
 	$CodeGeneration.generate_code()
 	
 	# set content in executor first

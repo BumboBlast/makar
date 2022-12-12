@@ -13,10 +13,11 @@ func save_script():
 
 
 func run_script():
-	print("trying to run the script")
 	
 	var Generated_code = load("res://Application/MakarPseudoCode/GeneratedCode.gd")
 	var run = Generated_code.new()
+	run.set_name("Custom Script")
+	get_tree().get_root().get_node("Application/GUI").add_child(run)
 	
 	# make sure this works or else itll crash
 	run.start()

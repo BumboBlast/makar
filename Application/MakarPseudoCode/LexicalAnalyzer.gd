@@ -37,5 +37,5 @@ func make_lexems():
 	if (!input_code):
 		print("line was not passed to lexicalanalyzer")
 	
-	var lexeme_set: PoolStringArray = input_code.split(' ')
+	var lexeme_set: PoolStringArray = input_code.split(' ', false)
 	return lexeme_set
