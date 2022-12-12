@@ -1,0 +1,18 @@
+extends Node
+const ArrayNode = preload("res://Application/MakarPseudoCode/Classes/Array.tscn")
+func start():
+	var primes = ArrayNode.instance()
+	primes.set_name("primes")
+	self.add_child(primes)
+	var hiAmelie = ArrayNode.instance()
+	hiAmelie.set_name("hiAmelie")
+	self.add_child(hiAmelie)
+	var myThingNowSupports = ArrayNode.instance()
+	myThingNowSupports.set_name("myThingNowSupports")
+	self.add_child(myThingNowSupports)
+	var ExecutingMultipleLines = ArrayNode.instance()
+	ExecutingMultipleLines.set_name("ExecutingMultipleLines")
+	self.add_child(ExecutingMultipleLines)
+	var butCanOnlyDoOneThingSoFarLol = ArrayNode.instance()
+	butCanOnlyDoOneThingSoFarLol.set_name("butCanOnlyDoOneThingSoFarLol")
+	self.add_child(butCanOnlyDoOneThingSoFarLol)

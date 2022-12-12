@@ -36,9 +36,16 @@ func try_execute():
 	# free all resources
 	
 	var parse_tree_set: Array
+	print("called try execute")
+	$Executor.empty_script()
+	
+	# build the header before even checking the input wow.
+	# also clears the new_code buffer
+	$CodeGeneration.build_header()
 	
 	for ln_number in range(0, editor_code.size()):
 		var line = editor_code[ln_number]
+		
 		$LexicalAnalyzer.set_input_code(line)
 		var lexemes = $LexicalAnalyzer.make_lexems()
 
@@ -54,6 +61,5 @@ func try_execute():
 		$Executor.set_content($CodeGeneration.get_new_code())
 		$Executor.save_script()
 		
-		# run the script and then delete the content
-		$Executor.run_script()
-	$Executor.empty_script()
+	# run the script and then delete the content
+	$Executor.run_script()

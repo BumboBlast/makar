@@ -14,6 +14,11 @@ func save_script():
 
 func run_script():
 	
+	for node in get_tree().get_root().get_node("Application/GUI").get_children():
+		if (node.get_name() == "Custom Script"):
+			print("deleting a dupe")
+			node.free()
+	
 	var Generated_code = load("res://Application/MakarPseudoCode/GeneratedCode.gd")
 	var run = Generated_code.new()
 	run.set_name("Custom Script")
@@ -24,5 +29,6 @@ func run_script():
 
 
 func empty_script():
+	print("called empty script")
 	content = ""
 	save_script()

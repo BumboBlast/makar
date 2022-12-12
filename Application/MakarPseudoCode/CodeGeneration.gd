@@ -15,21 +15,21 @@ func set_parse_tree(new_parse_tree):
 	parse_tree = new_parse_tree
 
 
-
-func generate_code():
-	
-	"""
-	Have to make a bunch of nodes in a singleton scene,
-	and then, from the outside, 'invite those scenes' to the scene tree
-	"""
-	
+# only call once per session, not once per line
+func build_header():
 	var header = "extends Node\n"
 	var array_node = "const ArrayNode = preload(\"res://Application/MakarPseudoCode/Classes/Array.tscn\")\n"
-	var start_function = "func start():\n\tprint(\"called generated code\")\n"
+	var start_function = "func start():\n"
 	
+	new_code = ""
 	new_code += header
 	new_code += array_node
 	new_code += start_function
+
+
+
+
+func generate_code():
 	
 	if (parse_tree.root == "initialization"):
 		
@@ -51,5 +51,5 @@ func generate_code():
 		new_code += name_node
 		new_code += add_child
 	
-	print(new_code)
+	#print(new_code)
 
