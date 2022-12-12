@@ -9,9 +9,6 @@ func _ready():
 	add_keyword_color("step", ColorN("lightblue"))
 	pass
 
-func _input(event):
-	if (event.is_action_pressed("ui_accept")):
-		push_code()
 
 
 func push_code():
@@ -21,3 +18,7 @@ func push_code():
 	
 	get_tree().get_root().get_node("Application/MakarPsuedoCode").set_editor_code(editor_content)
 	get_tree().get_root().get_node("Application/GUI").emit_signal("try_execute")
+
+
+func _on_Button_pressed():
+	push_code()

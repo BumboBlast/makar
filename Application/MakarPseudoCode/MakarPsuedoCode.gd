@@ -37,7 +37,8 @@ func try_execute():
 	
 	var parse_tree_set: Array
 	
-	for line in editor_code:
+	for ln_number in range(0, editor_code.size()):
+		var line = editor_code[ln_number]
 		$LexicalAnalyzer.set_input_code(line)
 		var lexemes = $LexicalAnalyzer.make_lexems()
 
@@ -45,13 +46,14 @@ func try_execute():
 		var new_parse_tree: ParseTree = $SyntacticAnalyzer.make_parse_tree()
 		parse_tree_set.append(new_parse_tree)
 	
-	# wtf is a parse tree and how to do turn it into code
-	$CodeGeneration.set_parse_tree(parse_tree_set[0])
-	$CodeGeneration.generate_code()
-	
-	# set content in executor first
-	$Executor.set_content($CodeGeneration.get_new_code())
-	$Executor.save_script()
-	
-	$Executor.run_script()
+		# wtf is a parse tree and how to do turn it into code
+		$CodeGeneration.set_parse_tree(parse_tree_set[ln_number])
+		$CodeGeneration.generate_code()
+		
+		# set content in executor first
+		$Executor.set_content($CodeGeneration.get_new_code())
+		$Executor.save_script()
+		
+		# run the script and then delete the content
+		$Executor.run_script()
 	$Executor.empty_script()

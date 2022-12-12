@@ -7,3 +7,4 @@
     [] Make the thing appear on the screen and animate
     [] Implement the mutex 
     [] Refactor so it actually works
+    [] Dont crash on typos
