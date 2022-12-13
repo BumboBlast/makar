@@ -62,8 +62,6 @@ func pair_lexeme_and_token():
 				lex_token_pairs[lex] = tokens[1]
 			if (lex in structures):
 				lex_token_pairs[lex] = tokens[2]
-			
-			
 
 
 # verify the grammar is correct
@@ -90,7 +88,7 @@ func make_parse_tree():
 	assume if my statement has an initializer, then it is an initializion statement
 	assume if first token is an initailizer, then it is an initalization statement
 	"""
-	# if first word was make
+	# if first word was make, this is an initialization statement
 	if (tokens[1] in these_tokens):
 		if (these_tokens.size() != 3) ||  \
 		(these_tokens[0] != tokens[1]) || \

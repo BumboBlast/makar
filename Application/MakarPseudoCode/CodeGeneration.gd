@@ -40,6 +40,7 @@ func generate_code():
 		var initialize_structure = "\tvar {identifier} = {structure}.instance()\n"
 		var name_node = "\t{identifier}.set_name(\"{identifier}\")\n"
 		var add_child = "\tself.add_child({identifier})\n"
+		
 		initialize_structure = initialize_structure.format({
 			"identifier" : parse_tree.node[2].lexeme,
 			"structure" : structure
