@@ -41,14 +41,20 @@ var punctuation = [
 
 
 var these_lexemes
+var these_tokens
+
+func set_lexemes(new_lexems):
+	these_lexemes = new_lexems
+func set_tokens(new_tokens):
+	these_tokens = new_tokens
+
 var lex_token_pairs: Dictionary
 
 var parse_tree
 
 
 
-func set_lexemes(new_lexems):
-	these_lexemes = new_lexems
+
 
 func only_ints(strg: String):
 	for c in strg:
@@ -93,15 +99,27 @@ func pair_lexeme_and_token():
 				lex_token_pairs[lex] = tokens[4]
 
 
-# verify the grammar is correct
-func syntax_correct():
-	return true
+
+
+
+
+func make_new_tree(statement_type: String):
+	var new_tree = ParseTree.new()
+	new_tree.root = statement_type
+	
+	for t in range(0, these_tokens.size()):
+		var new_node = TreeNode.new()
+		new_node.lexeme = these_lexemes[t]
+		new_node.token = these_tokens[t]
+		new_tree.node.append(new_node)
+	
+	return new_tree
 
 
 # convert lexeme-token pairs into a parse tree to be executed
 func make_parse_tree():
 	pair_lexeme_and_token()
-	var these_tokens = lex_token_pairs.values()
+	set_tokens(lex_token_pairs.values())
 	# if not every lexeme has a token, error
 	
 
@@ -125,17 +143,7 @@ func make_parse_tree():
 		(these_tokens[2] != tokens[0]):
 			print("syntax error")
 		
-		
-		var new_tree = ParseTree.new()
-		new_tree.root = "initialization"
-		
-		for t in range(0, these_tokens.size()):
-			var new_node = TreeNode.new()
-			new_node.lexeme = these_lexemes[t]
-			new_node.token = these_tokens[t]
-			new_tree.node.append(new_node)
-		
-		return new_tree
+		return make_new_tree("initialization")
 	
 	
 	# if '=' is in teh statement, then it is an assignment statement
@@ -146,16 +154,7 @@ func make_parse_tree():
 		(these_tokens[2] != tokens[1]):
 			print("syntax error")
 		
-		var new_tree = ParseTree.new()
-		new_tree.root = "assignment"
-		
-		for t in range(0, these_tokens.size()):
-			var new_node = TreeNode.new()
-			new_node.lexeme = these_lexemes[t]
-			new_node.token = these_tokens[t]
-			new_tree.node.append(new_node)
-		
-		return new_tree
+		return(make_new_tree("assignment"))
 
 	# wtf is a parse tree and how to do turn it into code
 
