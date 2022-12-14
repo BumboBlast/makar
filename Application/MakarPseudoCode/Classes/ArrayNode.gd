@@ -16,6 +16,11 @@ func assign_value(new_value: int):
 	$ArrayDisplay.add_text(new_string.format({"new_value" : new_value}))
 
 
+func append_value(new_value: int):
+	var new_string = "{new_value}"
+	$ArrayDisplay.add_text(new_string.format({"new_value" : new_value}))
+
+
 func _ready():
 
 
@@ -26,6 +31,5 @@ func _ready():
 	
 	
 	pointer_index = 0
-	array_text = $ArrayDisplay.text
 	$ArrayDisplay.clear()
 	$ArrayDisplay.add_text("{}")

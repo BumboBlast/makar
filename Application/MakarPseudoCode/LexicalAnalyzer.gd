@@ -31,11 +31,25 @@ var input_code: String
 func set_input_code(content: String):
 	input_code = content
 
+var delimeter_set = [
+	' ',
+	'.',
+	'(',
+	')',
+	'{',
+	'}'
+]
+
 
 # only returns one line (sentence) at a time
 func make_lexems():
 	if (!input_code):
 		print("line was not passed to lexicalanalyzer")
+	
+	for this_char in input_code:
+		if (this_char in delimeter_set):
+			var sub_comma = " " + this_char + " "
+			input_code = input_code.replace(this_char, sub_comma)
 	
 	var lexeme_set: PoolStringArray = input_code.split(' ', false)
 	return lexeme_set

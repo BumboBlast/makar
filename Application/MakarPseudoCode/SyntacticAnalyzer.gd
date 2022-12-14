@@ -8,10 +8,11 @@ A syntax analyzer uses tokens to construct a parse tree
 var key_words = [
 	"make",
 	"array",
+	"append",
 	"=",
-	"{",
-	"}",
-	","
+	"(",
+	")",
+	"."
 ]
 
 var tokens = [
@@ -20,7 +21,8 @@ var tokens = [
 	"initalizer",
 	"structure",
 	"assignment",
-	"punctuation",
+	"method",
+	"punctuation"
 ]
 
 var initializers = [
@@ -33,9 +35,12 @@ var assignment = [
 	"="
 ]
 var punctuation = [
-	"{",
-	"}",
-	","
+	"(",
+	")",
+	"."
+]
+var methods = [
+	"append"
 ]
 
 
@@ -85,8 +90,10 @@ func pair_lexeme_and_token():
 		if (!lex in key_words):
 			print ("trying to figure out : ", lex)
 			if (only_ints(lex)):
+				#literal
 				lex_token_pairs[lex] = tokens[1]
-			else:
+			else: 
+				# identifier
 				lex_token_pairs[lex] = tokens[0]
 			
 		if (lex in key_words):
@@ -97,7 +104,10 @@ func pair_lexeme_and_token():
 				lex_token_pairs[lex] = tokens[3]
 			if (lex in assignment):
 				lex_token_pairs[lex] = tokens[4]
-
+			if (lex in methods):
+				lex_token_pairs[lex] = tokens[5]
+			if (lex in punctuation):
+				lex_token_pairs[lex] = tokens[6]
 
 
 
@@ -155,6 +165,20 @@ func make_parse_tree():
 			print("syntax error")
 		
 		return(make_new_tree("assignment"))
-
+	
+	
+	# if has {method}, is a method statement
+	# grammer is {identifier}, '.', {method}, method statement
 	# wtf is a parse tree and how to do turn it into code
+	if (tokens[5] in these_tokens):
+		
+		if (these_tokens[0] != tokens[0]) || \
+		(these_tokens[1] != tokens[6]) || \
+		(these_tokens[2] != tokens[5]) || \
+		(these_tokens[3] != tokens[6]) || \
+		(these_tokens[4] != tokens[1]) || \
+		(these_tokens[5] != tokens[6]):
+			print("syntax error")
+		print("method statement")
+		return(make_new_tree("method"))
 

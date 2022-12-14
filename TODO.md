@@ -7,6 +7,8 @@
     [] Make the thing appear on the screen and animate
     [] Implement the mutex 
     [] Refactor lexicalanalyzer so it uses loops /switches and not 1mil if's
+    [] make my own split function in lexicalanalyzer so it isnt a heaping pile of stinky garbage ):
+            (did this a little bit c: )
     [] Refactor codegenerator so it uses loops / swtiches and not 1mil if's
     [] Refactor syntacticAnalyzer so it uses loops / swtiches and not 1mil if's
     [] Dont crash on typos

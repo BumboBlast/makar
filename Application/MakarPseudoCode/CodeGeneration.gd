@@ -67,5 +67,19 @@ func generate_code():
 		new_code += access_identifier
 		new_code += assignment_op
 	
+	
+	if (parse_tree.root == "method"):
+		
+		var this_method = parse_tree.node[2].lexeme
+		
+		if (this_method == "append"):
+			var call_append = "\t{identifier}.append_value({value})\n"
+			call_append = call_append.format({
+				"identifier" : parse_tree.node[0].lexeme,
+				"value" : parse_tree.node[4].lexeme
+			})
+			
+			new_code += call_append
+	
 	print(new_code)
 
