@@ -6,7 +6,7 @@
     [] Implement more things: Operations, Numbers, Punctuation
     [] Make the thing appear on the screen and animate
     [] Implement the mutex 
-    [] Refactor so it actually works
+    [] Refactor lexicalanalyzer so it uses loops /switches and not 1mil if's
     [] Dont crash on typos
     [] maybe fix redundant emptying of the script
     [] clear the new_code buffer which is added to the script each line

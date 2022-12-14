@@ -1,6 +1,8 @@
 extends Node
 const ArrayNode = preload("res://Application/MakarPseudoCode/Classes/Array.tscn")
 func start():
-	var aaaa = ArrayNode.instance()
-	aaaa.set_name("aaaa")
-	self.add_child(aaaa)
+	var primes = ArrayNode.instance()
+	primes.set_name("primes")
+	self.add_child(primes)
+	print(primes.name)
+	primes.assign_value(23)

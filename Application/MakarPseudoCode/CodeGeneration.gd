@@ -52,5 +52,20 @@ func generate_code():
 		new_code += name_node
 		new_code += add_child
 	
-	#print(new_code)
+	
+	if (parse_tree.root == "assignment"):
+		
+		var access_identifier = "\tprint({identifier}.name)\n"
+		var assignment_op = "\t{identifier}.assign_value({new_value})"
+		
+		access_identifier = access_identifier.format({"identifier" : parse_tree.node[0].lexeme})
+		assignment_op = assignment_op.format({
+			"identifier" : parse_tree.node[0].lexeme,
+			"new_value" : parse_tree.node[2].lexeme
+		})
+		
+		new_code += access_identifier
+		new_code += assignment_op
+	
+	print(new_code)
 
